@@ -23,6 +23,10 @@ public class ExerciseModel implements Comparable<ExerciseModel>{
     @JoinColumn(name = "user_id")
     UserModel userModel;
 
+    @OneToOne
+    @JoinColumn(name = "bodypart_id")
+    BodypartModel bodypartModel;
+
 
     @Override
     public int compareTo(ExerciseModel o) {
