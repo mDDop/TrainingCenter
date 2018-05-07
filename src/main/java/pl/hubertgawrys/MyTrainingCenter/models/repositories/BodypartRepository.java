@@ -14,4 +14,5 @@ public interface BodypartRepository extends CrudRepository<BodypartModel, Intege
 
     List<BodypartModel> findAllByUserModelEquals(UserModel usermodel);
     BodypartModel findByIdEquals(int id);
+    boolean existsByIdEquals(int id);
 }

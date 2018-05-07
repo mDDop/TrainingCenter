@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.hubertgawrys.MyTrainingCenter.models.TrainingModel;
+import pl.hubertgawrys.MyTrainingCenter.models.UserModel;
 import pl.hubertgawrys.MyTrainingCenter.models.WorkoutModel;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public interface TrainingRepository extends CrudRepository<TrainingModel, Intege
     @Query(value ="SELECT * FROM `training` INNER JOIN `workout` ON training.workout_id=workout.id", nativeQuery = true)
     List<TrainingModel> findJoin();
 
+    @Query(value ="SELECT * FROM `training` INNER JOIN `workout` ON training.workout_id=workout.id WHERE workout.user_id=?1", nativeQuery = true)
+    List<TrainingModel> findTrainingForUser(int userId);
+
     @Query(value ="SELECT SUM(kilos*reps), workout.date_id " +
             "FROM `training` JOIN `workout` ON workout_id=workout.id GROUP BY workout.date_id", nativeQuery = true)
     int[][] findWorkByDays();
@@ -29,4 +33,5 @@ public interface TrainingRepository extends CrudRepository<TrainingModel, Intege
     boolean existsByWorkoutModel_ExerciseModel_Id(int exerciseId);
    // List<TrainingModel> findAllByExerciseIdEquals(int idExercise);
   //  Optional<TrainingModel> findFirstByExerciseIdEquals(int idExercise);
+    List<TrainingModel> findByWorkoutModel_ExerciseModel_BodypartModel_IdAndWorkoutModel_UserModel(int bodypartId, UserModel userModel);
 }

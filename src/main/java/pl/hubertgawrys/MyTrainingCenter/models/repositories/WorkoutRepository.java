@@ -18,6 +18,8 @@ public interface WorkoutRepository extends CrudRepository<WorkoutModel, Integer>
     List<WorkoutModel> findAllByUserModel(UserModel userModel);
     boolean existsByDayModel_IdAndExerciseModel_IdAndUserModel(int dateId, int exerciseId, UserModel userModel);
     boolean existsByExerciseModel_Id(int exerciseId);
+    boolean existsWorkoutModelByExerciseModel_BodypartModel_Id(int id);
+
 
 
 }
