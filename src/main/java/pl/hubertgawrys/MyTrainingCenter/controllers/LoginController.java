@@ -19,11 +19,9 @@ import java.util.Optional;
 @Controller
 public class LoginController {
 
-    final
-    UserRepository userRepository;
+    final UserRepository userRepository;
 
-    final
-    UserService userService;
+    final UserService userService;
 
     @Autowired
     public LoginController(UserRepository userRepository, UserService userService) {

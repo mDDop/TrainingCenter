@@ -10,4 +10,5 @@ import lombok.Setter;
 public class ExerciseForm {
 
     private String nameGroup;
+    private int bodypartId;
 }

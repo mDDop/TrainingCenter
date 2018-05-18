@@ -22,14 +22,11 @@ import java.util.List;
 @Controller
 public class DayController {
 
-    final
-    DayRepository dayRepository;
+    final DayRepository dayRepository;
 
-    final
-    TrainingRepository trainingRepository;
+    final TrainingRepository trainingRepository;
 
-    final
-    UserService userService;
+    final UserService userService;
 
     final WorkoutRepository workoutRepository;
 
@@ -54,8 +51,6 @@ public class DayController {
     public String dayGet(Model model){
         List<DayModel> daysUser = dayRepository.findAllByUserModelsEquals(userService.getUserModel());
         List<ResultModel> workOnDay =  workService.calculateWorkDay();
-        //List<WorkModel> workOnDay2 =  workService.calculateWorkTraining();
-       // List<WorkModel> workOnDay3 =  workService.calculeteWorkWorkout();
         model.addAttribute("days", daysUser);
         model.addAttribute("workOnDays", workOnDay);
 
